@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import Task from "./Task";
 
 const ProjectInfo = ({ selectedProject, setSelectedProject, setProjects }) => {
