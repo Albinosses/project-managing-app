@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Input from "./Input";
 
 const INPUT_DATA = {
   title: "",
@@ -35,24 +36,21 @@ const AddProject = ({ onExit }) => {
           Save
         </button>
       </div>
-      <label>Title</label>
-      <input
+      <Input
+        label="Title"
         type="text"
-        className="bg-zinc-300"
         value={inputData.title}
         onChange={(e) => handleChange(e, "title")}
       />
-      <label className="mt-5">Description</label>
-      <textarea
-        type="text"
-        className="bg-zinc-300 h-"
+      <Input
+        label="Description"
+        isTextarea={true}
         value={inputData.description}
         onChange={(e) => handleChange(e, "description")}
       />
-      <label className="mt-5">Due Date</label>
-      <input
+      <Input
+        label="Due Date"
         type="date"
-        className="bg-zinc-300"
         value={inputData.date}
         onChange={(e) => handleChange(e, "date")}
       />
