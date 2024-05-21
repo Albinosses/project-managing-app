@@ -6,7 +6,7 @@ const INPUT_DATA = {
   date: "",
 };
 
-const AddProject = () => {
+const AddProject = ({ onExit }) => {
   const [inputData, setInputData] = useState(INPUT_DATA);
 
   const handleChange = (e, key) => {
@@ -21,10 +21,16 @@ const AddProject = () => {
   return (
     <div className="h-screen flex flex-col m-5">
       <div>
-        <button className="pl-3 pr-3 p-1.5 hover:bg-zinc-500 rounded">
+        <button
+          className="pl-3 pr-3 p-1.5 hover:bg-zinc-500 rounded"
+          onClick={() => onExit("cancel")}
+        >
           Cancel
         </button>
-        <button className="pl-3 pr-3 p-1.5 m-3 bg-zinc-900 hover:bg-zinc-500 text-zinc-100 rounded">
+        <button
+          className="pl-3 pr-3 p-1.5 m-3 bg-zinc-900 hover:bg-zinc-500 text-zinc-100 rounded"
+          onClick={() => onExit("add", inputData)}
+        >
           Save
         </button>
       </div>
