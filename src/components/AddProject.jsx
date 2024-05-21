@@ -4,6 +4,7 @@ const INPUT_DATA = {
   title: "",
   description: "",
   date: "",
+  tasks: [],
 };
 
 const AddProject = ({ onExit }) => {

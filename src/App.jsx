@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import AddProject from "./components/AddProject";
 import Sidebar from "./components/Sidebar";
 import NoProjects from "./components/NoProjects";
@@ -6,7 +6,7 @@ import ProjectInfo from "./components/ProjectInfo";
 
 function App() {
   const [projectIsBeingCreated, setProjectIsBeingCreated] = useState(false);
-  const [selectedProjectIndex, setSelectedProjectIndex] = useState(undefined);
+  const [selectedProject, setSelectedProject] = useState(null);
   const [projects, setProjects] = useState([]);
 
   const onExitAddProjectWindow = (action, data) => {
@@ -25,13 +25,21 @@ function App() {
   return (
     <div className="flex">
       <div className="w-1/5">
-        <Sidebar projects={projects} />
+        <Sidebar
+          projects={projects}
+          onCreateNewProject={handleAddProjectButton}
+          setSelectedProject={setSelectedProject}
+        />
       </div>
       <div className="w-4/5">
         {projectIsBeingCreated ? (
           <AddProject onExit={onExitAddProjectWindow} />
-        ) : selectedProjectIndex ? (
-          <ProjectInfo />
+        ) : selectedProject !== null ? (
+          <ProjectInfo
+            selectedProject={selectedProject}
+            setSelectedProject={setSelectedProject}
+            setProjects={setProjects}
+          />
         ) : (
           <NoProjects onCreateNewProject={handleAddProjectButton} />
         )}
